@@ -13,7 +13,13 @@ function App() {
   // this should be refactored into a search bar component
   const handleQuerySubmission = submitEvent => {
     submitEvent.preventDefault();
-    coreLibrary.executeUniversalQuery().then(console.log(coreLibrary.state.universal.results));
+    coreLibrary.executeUniversalQuery().then(
+      
+      console.log(coreLibrary.state.universal.results),
+
+      document.getElementById("results").innerHTML = JSON.stringify(coreLibrary.state.universal.results)
+      
+    );
   }
 
   return (
@@ -22,11 +28,7 @@ function App() {
           handleQueryUpdate={e => {coreLibrary.setQuery(e.target.value)}}
           handleQuerySubmission={handleQuerySubmission}
         />
-        <div>
-            {/* <form onSubmit={handleQuerySubmission}>
-                <input type="text" onInput={e => {coreLibrary.setQuery(e.target.value)}}/>
-                <button type="submit">submit</button>
-            </form> */}
+        <div id="results">
         </div>
     </div>
   );

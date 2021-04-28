@@ -1,8 +1,6 @@
 import './App.css';
 import { provideStatefulCore } from 'stateful-core';
 
-const query = "open positions!";
-
 function App() {
 
   const coreLibrary = provideStatefulCore({
@@ -11,23 +9,20 @@ function App() {
     experienceVersion: 'PRODUCTION'
   })
 
+  // this should be refactored into a search bar component
   const handleQuerySubmission = submitEvent => {
     submitEvent.preventDefault();
-    coreLibrary.setQuery({ query })
-    coreLibrary.executeUniversalQuery()
-      .then(console.log(coreLibrary.state));
+    coreLibrary.executeUniversalQuery().then(console.log(coreLibrary.state.universal.results));
   }
 
   return (
     <div className="App">
         <div>
             <form onSubmit={handleQuerySubmission}>
-                <input type="text" value={query}/>
+                <input type="text" onInput={e => {coreLibrary.setQuery(e.target.value)}}/>
                 <button type="submit">submit</button>
             </form>
         </div>
-
-
     </div>
   );
 }

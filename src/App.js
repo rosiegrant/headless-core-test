@@ -1,5 +1,6 @@
 import './App.css';
 import { provideStatefulCore } from 'stateful-core';
+import SearchBar from './components/searchbar';
 
 function App() {
 
@@ -17,11 +18,15 @@ function App() {
 
   return (
     <div className="App">
+        <SearchBar  
+          handleQueryUpdate={e => {coreLibrary.setQuery(e.target.value)}}
+          handleQuerySubmission={handleQuerySubmission}
+        />
         <div>
-            <form onSubmit={handleQuerySubmission}>
+            {/* <form onSubmit={handleQuerySubmission}>
                 <input type="text" onInput={e => {coreLibrary.setQuery(e.target.value)}}/>
                 <button type="submit">submit</button>
-            </form>
+            </form> */}
         </div>
     </div>
   );

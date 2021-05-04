@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * A simple search bar Component.
  */
-export default function SearchBar(props) {
+export default function SearchBar(props: { query: any; handleQueryUpdate: any; handleQuerySubmission: any; }) {
     const { query, handleQueryUpdate, handleQuerySubmission } = props;
 
     return (

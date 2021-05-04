@@ -17,7 +17,7 @@ export default class UniversalResults extends React.Component {
        if (this.props.results.length === 0) {
             return (
                 <div>
-                    no results
+                    no search results
                 </div>
             )
         } 
